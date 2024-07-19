@@ -1,1 +1,2 @@
-export * from './CatalogTypes'
+export * from './CatalogTypes';
+export * from './database';

@@ -27,3 +27,25 @@ export const fetchCars = async () => {
   }
 }
 
+// Fetch all brands
+export const fetchBrands = async () => {
+  try {
+    const response = await carsApi.get(queriesRoutes.brands);
+    return response.data; // The array of brands
+  } catch (error) {
+    console.error('Error fetching brands:', error);
+    throw error;
+  }
+}
+
+// Fetch catalog view
+export const fetchVWCatalogCars = async () => {
+  try {
+    const response = await carsApi.get(queriesRoutes.catalog);
+    return response.data; // The array for the catalog view
+  } catch (error) {
+    console.error('Error fetching catalog:', error);
+    throw error;
+  }
+}
+

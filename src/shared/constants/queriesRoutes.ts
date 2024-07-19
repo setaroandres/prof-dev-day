@@ -1,4 +1,7 @@
 export const queriesRoutes = {
     categories: '/categories',
-    cars: '/cars'
+    cars: '/cars',
+    brands: '/brands',
+    country: '/country',
+    catalog: '/catalog',
 }

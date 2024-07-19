@@ -10,4 +10,5 @@ export type Car = {
   categoryId: number;
   price: number;
   img?: string;
+  description: string;
 };

@@ -1,40 +1,41 @@
 import { createBrowserRouter } from "react-router-dom";
 import {
-  CatalogPage,
   CategoryPage,
   DataLoadingPage,
   ErrorPage,
   ProductPage,
+  CategoriesPage,
+  CatalogPage
 } from "../cars/pages";
-import { CategoriesPage } from "../cars/pages/CategoriesPage";
 import { CarsLayout } from "../cars/layout";
+import { ROUTES } from "./routes";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: ROUTES.catalog,
     element: <CarsLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "",
+        path: ROUTES.catalog,
         element: <CatalogPage />,
       },
       {
-        path: "categories",
+        path: ROUTES.categories,
         element: <CategoriesPage />,
       },
       {
-        path: "product/:id",
+        path: ROUTES.product,
         element: <ProductPage />,
       },
       {
-        path: "category/:id",
+        path: ROUTES.category,
         element: <CategoryPage />,
       },
     ],
   },
   {
-    path: '/dataLoading',
+    path: ROUTES.dataLoading,
     element: <DataLoadingPage />
   }
 ]);

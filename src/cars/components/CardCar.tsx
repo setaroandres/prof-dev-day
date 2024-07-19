@@ -5,10 +5,10 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import { Car } from "../../shared/types";
+import { IVWCatalogInformation } from "../../shared/types";
 
 type CardCardProps = {
-  car: Car;
+  car: IVWCatalogInformation;
 };
 
 export const CardCar = ({ car }: CardCardProps) => {
@@ -26,8 +26,7 @@ export const CardCar = ({ car }: CardCardProps) => {
             {car.year} - {car.name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {car.description}
           </Typography>
         </CardContent>
       </CardActionArea>
