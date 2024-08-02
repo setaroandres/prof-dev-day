@@ -4,4 +4,5 @@ export const ROUTES = {
     category: 'category/:id',
     dataLoading: 'dataLoading',
     catalog: '/',
+    car: 'car/:carid',
 };

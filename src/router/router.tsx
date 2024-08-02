@@ -5,7 +5,8 @@ import {
   ErrorPage,
   ProductPage,
   CategoriesPage,
-  CatalogPage
+  CatalogPage,
+  CarPage
 } from "../cars/pages";
 import { CarsLayout } from "../cars/layout";
 import { ROUTES } from "./routes";
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
         path: ROUTES.category,
         element: <CategoryPage />,
       },
+      {
+        path: ROUTES.car,
+        element: <CarPage />,
+      }
     ],
   },
   {

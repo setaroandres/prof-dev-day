@@ -1,6 +1,8 @@
+import { MemoryRouter } from "react-router-dom";
 import { CatalogPage } from "../../../cars/pages";
 import { useCatalog, useCategories } from "../../../shared/queries";
 import { render } from "../../../test-utils";
+import { CATEGORIES_MOCK, VW_CATALOG_INFORMATION_MOCK } from "../../../test-utils/mock-data";
 
 const mockUseCategories = useCategories as jest.Mock;
 const mockUseCatalog = useCatalog as jest.Mock;
@@ -28,7 +30,7 @@ describe("Component: CatalogPage", () => {
       isLoading: true,
     });
 
-    const { getByText } = render(<CatalogPage />);
+    const { getByText } = render(<MemoryRouter initialEntries={[""]}><CatalogPage /></MemoryRouter>);
 
     // Act
     const loadingText = getByText("Loading...");
@@ -49,7 +51,7 @@ describe("Component: CatalogPage", () => {
       error: { message: "No data found" },
       isLoading: false,
     });
-    const { getByText } = render(<CatalogPage />);
+    const { getByText } = render(<MemoryRouter initialEntries={[""]}><CatalogPage /></MemoryRouter>);
 
     // Act
     const loadingText = getByText("An error occurred: No data found");
@@ -61,32 +63,18 @@ describe("Component: CatalogPage", () => {
   it("should render the component after categories and cars data are loaded and no error ocurred", async () => {
     // Arrange
     mockUseCategories.mockReturnValue({
-      data: [
-        { id: 1, name: "Category 1" },
-        { id: 2, name: "Category 2" },
-      ], // los datos que deseas retornar
+      data: CATEGORIES_MOCK,
       error: null,
       isLoading: false,
     });
 
     mockUseCatalog.mockReturnValue({
-      data: [
-        {
-          id: 1,
-          name: "Ford Bronco",
-          year: 1982,
-          category: "Vintage 4x4",
-          price: 125500,
-          img: "img.jpg",
-          description: "Mocked description",
-          brand: "Ford",
-        },
-      ],
+      data: VW_CATALOG_INFORMATION_MOCK,
       error: null,
       isLoading: false,
     });
 
-    const { getByText } = render(<CatalogPage />);
+    const { getByText } = render(<MemoryRouter initialEntries={[""]}><CatalogPage /></MemoryRouter>);
 
     // Act
     const pageTitle = getByText("Cars");
@@ -99,10 +87,7 @@ describe("Component: CatalogPage", () => {
   it("should render the not data found message when catalog is empty", async () => {
     // Arrange
     mockUseCategories.mockReturnValue({
-      data: [
-        { id: 1, name: "Category 1" },
-        { id: 2, name: "Category 2" },
-      ],
+      data: CATEGORIES_MOCK,
       error: null,
       isLoading: false,
     });
@@ -113,7 +98,7 @@ describe("Component: CatalogPage", () => {
       isLoading: false,
     });
 
-    const { getByText } = render(<CatalogPage />);
+    const { getByText } = render(<MemoryRouter initialEntries={[""]}><CatalogPage /></MemoryRouter>);
 
     // Act
     const pageTitle = getByText("No data found");

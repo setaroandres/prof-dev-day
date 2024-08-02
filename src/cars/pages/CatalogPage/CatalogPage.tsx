@@ -33,14 +33,14 @@ export const CatalogPage = () => {
       </ButtonGroup>
 
       {catalog?.length ? (
-        <Container maxWidth={"lg"}>
+        <Container maxWidth={false}>
           <Typography variant="h5" mt={4} mb={2}>
             Cars
           </Typography>
-          <Grid container spacing={3}>
+          <Grid container spacing={2}>
             {catalog?.map((car) => (
-              <Grid item key={car.id} xs={12} sm={6} md={4}>
-                <CardCar car={car} />
+              <Grid item key={car.id} xs={12} sm={6} lg={3}>
+                <CardCar car={car} key={car.id} />
               </Grid>
             ))}
           </Grid>
